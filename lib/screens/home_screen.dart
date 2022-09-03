@@ -1,19 +1,15 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_store_app/resources/color_manager.dart';
-import 'package:mini_store_app/resources/font_manager.dart';
 import 'package:mini_store_app/resources/icon_manager.dart';
 import 'package:mini_store_app/resources/route_manager.dart';
 import 'package:mini_store_app/resources/string_manager.dart';
 import 'package:mini_store_app/resources/values_manager.dart';
-import 'package:mini_store_app/screens/feeds_screen.dart';
 import 'package:mini_store_app/services/utils.dart';
-import 'package:page_transition/page_transition.dart';
 
 import '../widgets/appbar_icons.dart';
 import '../widgets/feeds_widget.dart';
 import '../widgets/onsale_widget.dart';
-import '../widgets/text_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -113,10 +109,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Row(
                         children: [
-                          TextWidget(
-                            text: AppStrings.latestProducts,
-                            fontWeight: FontWeightManager.medium,
-                            textSize: AppSize.s18,
+                          Text(
+                            AppStrings.latestProducts,
+                            style: Theme.of(context).textTheme.headlineMedium,
                           ),
                           const Spacer(),
                           AppBarIcons(
@@ -138,7 +133,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           crossAxisCount: AppSize.s2.toInt(),
                           crossAxisSpacing: AppMargin.m0,
                           mainAxisSpacing: AppMargin.m0,
-                          childAspectRatio: size.width / (size.height * 0.75),
+                          childAspectRatio:
+                              size.width / (size.height * AppSize.s0_75),
                         ),
                       ),
                     ],

@@ -4,7 +4,6 @@ import 'package:mini_store_app/resources/font_manager.dart';
 import 'package:mini_store_app/resources/icon_manager.dart';
 import 'package:mini_store_app/resources/values_manager.dart';
 import 'package:mini_store_app/services/utils.dart';
-import 'package:mini_store_app/widgets/text_widget.dart';
 
 import '../resources/color_manager.dart';
 
@@ -74,12 +73,10 @@ class FeedsWidget extends StatelessWidget {
               const SizedBox(height: AppMargin.m10),
               Padding(
                 padding: const EdgeInsets.all(AppPadding.p8),
-                child: TextWidget(
-                  text: 'Title',
-                  overflow: TextOverflow.ellipsis,
+                child: Text(
+                  'Title',
+                  style: Theme.of(context).textTheme.titleMedium,
                   maxLines: AppSize.s2.toInt(),
-                  textSize: AppSize.s18,
-                  fontWeight: FontWeightManager.semiBold,
                 ),
               ),
               SizedBox(height: size.height * AppSize.s0_01),

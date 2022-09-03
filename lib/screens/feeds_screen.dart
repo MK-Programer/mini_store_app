@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../resources/font_manager.dart';
 import '../resources/string_manager.dart';
 import '../resources/values_manager.dart';
 import '../services/utils.dart';
 import '../widgets/feeds_widget.dart';
-import '../widgets/text_widget.dart';
 
 class FeedsScreen extends StatelessWidget {
   const FeedsScreen({Key? key}) : super(key: key);
@@ -28,7 +26,7 @@ class FeedsScreen extends StatelessWidget {
           crossAxisCount: AppSize.s2.toInt(),
           crossAxisSpacing: AppMargin.m0,
           mainAxisSpacing: AppMargin.m0,
-          childAspectRatio: size.width / (size.height * 0.75),
+          childAspectRatio: size.width / (size.height * AppSize.s0_75),
         ),
       ),
     );

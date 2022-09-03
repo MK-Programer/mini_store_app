@@ -42,6 +42,26 @@ class ThemeManager {
             secondary: ColorManager.lightIconsColor,
             brightness: Brightness.light,
           ),
+      textTheme: const TextTheme(
+        titleSmall: TextStyle(
+          color: ColorManager.white,
+          fontSize: FontSize.s14,
+        ),
+        titleMedium: TextStyle(
+          overflow: TextOverflow.ellipsis,
+          fontSize: FontSize.s18,
+          fontWeight: FontWeightManager.semiBold,
+        ),
+        headlineMedium: TextStyle(
+          color: ColorManager.blackColor,
+          fontWeight: FontWeightManager.medium,
+          fontSize: FontSize.s18,
+        ),
+        bodySmall: TextStyle(
+          color: ColorManager.white,
+          fontWeight: FontWeightManager.bold,
+        ),
+      ),
     );
   }
 }
