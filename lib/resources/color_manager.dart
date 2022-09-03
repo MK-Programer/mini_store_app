@@ -11,6 +11,7 @@ class ColorManager {
   static const Color blueColor = Colors.blue;
 
   static const Color white = Colors.white;
+  static const Color red = Colors.red;
 
   // colors used in onsale widget
   static const Color royalPurple = Color(0xFF7A60A5);
