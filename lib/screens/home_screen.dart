@@ -90,25 +90,47 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: AppMargin.m16),
-              SizedBox(
-                height: size.height * AppSize.s0_25,
-                child: Swiper(
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return const OnSaleWidget();
-                  },
-                  pagination: const SwiperPagination(
-                    alignment: Alignment.bottomCenter,
-                    builder: DotSwiperPaginationBuilder(
-                      activeColor: ColorManager.red,
-                      color: ColorManager.white,
-                    ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: AppMargin.m16),
+                      SizedBox(
+                        height: size.height * AppSize.s0_25,
+                        child: Swiper(
+                          itemCount: 3,
+                          itemBuilder: (context, index) {
+                            return const OnSaleWidget();
+                          },
+                          pagination: const SwiperPagination(
+                            alignment: Alignment.bottomCenter,
+                            builder: DotSwiperPaginationBuilder(
+                              activeColor: ColorManager.red,
+                              color: ColorManager.white,
+                            ),
+                          ),
+                          autoplay: true,
+                        ),
+                      ),
+                      const SizedBox(height: AppMargin.m20),
+                      GridView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: 3,
+                        itemBuilder: (context, index) {
+                          return const FeedsWidget();
+                        },
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: AppSize.s2.toInt(),
+                          crossAxisSpacing: AppMargin.m0,
+                          mainAxisSpacing: AppMargin.m0,
+                          childAspectRatio: size.width / (size.height * 0.75),
+                        ),
+                      ),
+                    ],
                   ),
-                  autoplay: true,
                 ),
               ),
-              const FeedsWidget(),
             ],
           ),
         ),
