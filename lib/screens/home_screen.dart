@@ -5,6 +5,7 @@ import 'package:mini_store_app/resources/string_manager.dart';
 import 'package:mini_store_app/resources/values_manager.dart';
 
 import '../widgets/appbar_icons.dart';
+import '../widgets/onsale_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -54,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(AppPadding.p8),
           child: Column(
             children: [
-              const SizedBox(height: AppSize.s18),
+              const SizedBox(height: AppMargin.m18),
               TextField(
                 controller: _searchEditingController,
                 keyboardType: TextInputType.text,
@@ -75,12 +76,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Theme.of(context).colorScheme.secondary,
                     ),
                   ),
-                  suffixIcon: Icon(
+                  suffixIcon: const Icon(
                     IconManager.search,
                     color: ColorManager.lightIconsColor,
                   ),
                 ),
               ),
+              const OnSaleWidget(),
             ],
           ),
         ),

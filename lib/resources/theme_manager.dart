@@ -9,7 +9,7 @@ class ThemeManager {
       scaffoldBackgroundColor: ColorManager.lightScaffoldColor,
       primaryColor: ColorManager.lightCardColor,
       backgroundColor: ColorManager.lightBackgroundColor,
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         iconTheme: IconThemeData(
           color: ColorManager.lightIconsColor,
         ),
@@ -22,10 +22,10 @@ class ThemeManager {
         ),
         elevation: AppSize.s0,
       ),
-      iconTheme: IconThemeData(
+      iconTheme: const IconThemeData(
         color: ColorManager.lightIconsColor,
       ),
-      textSelectionTheme: TextSelectionThemeData(
+      textSelectionTheme: const TextSelectionThemeData(
         cursorColor: ColorManager.blackColor,
         selectionColor: ColorManager.blueColor,
         // selectionHandleColor: Colors.blue,
