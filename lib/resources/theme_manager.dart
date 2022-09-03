@@ -6,7 +6,6 @@ import 'package:mini_store_app/resources/values_manager.dart';
 class ThemeManager {
   static ThemeData themeData() {
     return ThemeData(
-      // textTheme: TextTheme(),
       scaffoldBackgroundColor: ColorManager.lightScaffoldColor,
       primaryColor: ColorManager.lightCardColor,
       backgroundColor: ColorManager.lightBackgroundColor,

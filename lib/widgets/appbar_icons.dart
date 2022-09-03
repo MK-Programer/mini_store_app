@@ -13,7 +13,7 @@ class AppBarIcons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(AppSize.s4),
+      padding: const EdgeInsets.all(AppPadding.p4),
       child: GestureDetector(
         onTap: function(),
         child: Container(
@@ -22,7 +22,7 @@ class AppBarIcons extends StatelessWidget {
             color: Theme.of(context).cardColor,
           ),
           child: Padding(
-            padding: const EdgeInsets.all(AppSize.s6),
+            padding: const EdgeInsets.all(AppPadding.p6),
             child: Icon(icon),
           ),
         ),
