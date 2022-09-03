@@ -33,7 +33,7 @@ class OnSaleWidget extends StatelessWidget {
       child: Row(
         children: [
           Flexible(
-            flex: AppSize.s2,
+            flex: AppSize.s2.toInt(),
             child: Padding(
               padding: const EdgeInsets.all(AppPadding.p14),
               child: Container(
@@ -71,7 +71,7 @@ class OnSaleWidget extends StatelessWidget {
             ),
           ),
           Flexible(
-            flex: AppSize.s3,
+            flex: AppSize.s3.toInt(),
             child: Padding(
               padding: const EdgeInsets.all(AppPadding.p14),
               child: Image.network(

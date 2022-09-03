@@ -85,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
+              const SizedBox(height: AppMargin.m16),
               SizedBox(
                 height: size.height * AppSize.s0_25,
                 child: Swiper(
