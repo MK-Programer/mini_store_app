@@ -14,14 +14,13 @@ class FeedsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
-    return InkWell(
-      borderRadius: BorderRadius.circular(AppSize.s8),
-      onTap: () {},
-      child: Padding(
-        padding: const EdgeInsets.all(AppPadding.p2),
-        child: Material(
-          borderRadius: BorderRadius.circular(AppSize.s8),
-          color: Theme.of(context).cardColor,
+    return Padding(
+      padding: const EdgeInsets.all(AppPadding.p2),
+      child: Material(
+        borderRadius: BorderRadius.circular(AppSize.s8),
+        color: Theme.of(context).cardColor,
+        child: InkWell(
+          onTap: () {},
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
