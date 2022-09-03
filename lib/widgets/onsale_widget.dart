@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_store_app/resources/font_manager.dart';
 import 'package:mini_store_app/resources/values_manager.dart';
 import 'package:mini_store_app/services/utils.dart';
 import 'package:mini_store_app/widgets/text_widget.dart';
@@ -47,11 +48,12 @@ class OnSaleWidget extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       TextWidget(
                         text: 'Get the special discount',
+                        color: ColorManager.white,
                       ),
-                      SizedBox(height: AppMargin.m18),
+                      const SizedBox(height: AppMargin.m18),
                       Flexible(
                         child: SizedBox(
                           width: double.infinity,
@@ -59,7 +61,8 @@ class OnSaleWidget extends StatelessWidget {
                             fit: BoxFit.fill,
                             child: TextWidget(
                               text: '50%\nOFF',
-                              isTitle: true,
+                              color: ColorManager.white,
+                              fontWeight: FontWeightManager.bold,
                             ),
                           ),
                         ),

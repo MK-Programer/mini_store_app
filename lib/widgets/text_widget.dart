@@ -3,19 +3,22 @@ import 'package:mini_store_app/resources/color_manager.dart';
 import 'package:mini_store_app/resources/font_manager.dart';
 import 'package:mini_store_app/resources/values_manager.dart';
 
+// ignore: must_be_immutable
 class TextWidget extends StatelessWidget {
   final String text;
   final Color color;
   final double textSize;
-  final bool isTitle;
+  final FontWeight fontWeight;
   final int maxLines;
-  const TextWidget({
+  TextOverflow? overflow;
+  TextWidget({
     Key? key,
     required this.text,
-    this.color = ColorManager.white,
+    this.color = ColorManager.blackColor,
     this.textSize = AppSize.s14,
-    this.isTitle = false,
+    this.fontWeight = FontWeightManager.normal,
     this.maxLines = 10,
+    this.overflow,
   }) : super(key: key);
 
   @override
@@ -25,7 +28,8 @@ class TextWidget extends StatelessWidget {
       style: TextStyle(
         color: color,
         fontSize: textSize,
-        fontWeight: isTitle ? FontWeightManager.bold : FontWeightManager.normal,
+        fontWeight: fontWeight,
+        overflow: overflow,
       ),
       maxLines: maxLines,
     );

@@ -1,13 +1,16 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_store_app/resources/color_manager.dart';
+import 'package:mini_store_app/resources/font_manager.dart';
 import 'package:mini_store_app/resources/icon_manager.dart';
 import 'package:mini_store_app/resources/string_manager.dart';
 import 'package:mini_store_app/resources/values_manager.dart';
 import 'package:mini_store_app/services/utils.dart';
 
 import '../widgets/appbar_icons.dart';
+import '../widgets/feeds_widget.dart';
 import '../widgets/onsale_widget.dart';
+import '../widgets/text_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -40,17 +43,19 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            AppStrings.home,
+          title: TextWidget(
+            text: AppStrings.home,
+            textSize: AppSize.s20,
+            fontWeight: FontWeightManager.medium,
           ),
           leading: AppBarIcons(
             function: () {},
-            icon: IconManager.categoryIcon,
+            icon: IconManager.categoryBold,
           ),
           actions: [
             AppBarIcons(
               function: () {},
-              icon: IconManager.user3,
+              icon: IconManager.user3Bold,
             ),
           ],
         ),
@@ -80,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   suffixIcon: const Icon(
-                    IconManager.search,
+                    IconManager.searchLight,
                     color: ColorManager.lightIconsColor,
                   ),
                 ),
@@ -103,6 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   autoplay: true,
                 ),
               ),
+              const FeedsWidget(),
             ],
           ),
         ),
