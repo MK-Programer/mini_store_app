@@ -15,7 +15,9 @@ class AppBarIcons extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(AppPadding.p4),
       child: GestureDetector(
-        onTap: function(),
+        onTap: () {
+          function();
+        },
         child: Container(
           decoration: BoxDecoration(
             shape: BoxShape.circle,

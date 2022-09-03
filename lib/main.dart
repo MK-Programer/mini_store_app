@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mini_store_app/resources/route_manager.dart';
 import 'package:mini_store_app/resources/theme_manager.dart';
-import 'package:mini_store_app/screens/home_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Mini Store APP',
       theme: ThemeManager.themeData(),
-      home: const HomeScreen(),
+      initialRoute: Routes.homeRoute,
+      onGenerateRoute: RouteGenerator.getRoute,
     );
   }
 }

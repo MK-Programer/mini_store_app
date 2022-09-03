@@ -6,4 +6,5 @@ class IconManager {
   static const searchLight = IconlyLight.search;
   static const heartBold = IconlyBold.heart;
   static const dangerBold = IconlyBold.danger;
+  static const arrowRight2Bold = IconlyBold.arrowRight2;
 }

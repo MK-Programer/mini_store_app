@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:mini_store_app/resources/color_manager.dart';
 import 'package:mini_store_app/resources/font_manager.dart';
 import 'package:mini_store_app/resources/icon_manager.dart';
+import 'package:mini_store_app/resources/route_manager.dart';
 import 'package:mini_store_app/resources/string_manager.dart';
 import 'package:mini_store_app/resources/values_manager.dart';
+import 'package:mini_store_app/screens/feeds_screen.dart';
 import 'package:mini_store_app/services/utils.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../widgets/appbar_icons.dart';
 import '../widgets/feeds_widget.dart';
@@ -43,11 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: TextWidget(
-            text: AppStrings.home,
-            textSize: AppSize.s20,
-            fontWeight: FontWeightManager.medium,
-          ),
+          title: const Text(AppStrings.home),
           leading: AppBarIcons(
             function: () {},
             icon: IconManager.categoryBold,
@@ -112,7 +111,22 @@ class _HomeScreenState extends State<HomeScreen> {
                           autoplay: true,
                         ),
                       ),
-                      const SizedBox(height: AppMargin.m20),
+                      Row(
+                        children: [
+                          TextWidget(
+                            text: AppStrings.latestProducts,
+                            fontWeight: FontWeightManager.medium,
+                            textSize: AppSize.s18,
+                          ),
+                          const Spacer(),
+                          AppBarIcons(
+                            function: () {
+                              Navigator.pushNamed(context, Routes.feedsRoute);
+                            },
+                            icon: IconManager.arrowRight2Bold,
+                          ),
+                        ],
+                      ),
                       GridView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
