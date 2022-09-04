@@ -60,10 +60,12 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               const SizedBox(height: AppMargin.m18),
               TextField(
+                style: Theme.of(context).textTheme.displaySmall,
                 controller: _searchEditingController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   hintText: AppStrings.search,
+                  hintStyle: TextStyle(color: ColorManager.grey),
                   filled: true,
                   fillColor: Theme.of(context).cardColor,
                   enabledBorder: OutlineInputBorder(

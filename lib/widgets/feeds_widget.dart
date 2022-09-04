@@ -2,6 +2,8 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_store_app/resources/font_manager.dart';
 import 'package:mini_store_app/resources/icon_manager.dart';
+import 'package:mini_store_app/resources/route_manager.dart';
+import 'package:mini_store_app/resources/string_manager.dart';
 import 'package:mini_store_app/resources/values_manager.dart';
 import 'package:mini_store_app/services/utils.dart';
 
@@ -19,7 +21,9 @@ class FeedsWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSize.s8),
         color: Theme.of(context).cardColor,
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, Routes.productDetailsRoute);
+          },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -34,18 +38,13 @@ class FeedsWidget extends StatelessWidget {
                   children: [
                     Flexible(
                       child: RichText(
-                        text: const TextSpan(
-                          text: '\$',
-                          style: TextStyle(
-                            color: ColorManager.cyan,
-                          ),
+                        text: TextSpan(
+                          text: AppStrings.dollarSign,
+                          style: Theme.of(context).textTheme.labelMedium,
                           children: [
                             TextSpan(
                               text: '168.00',
-                              style: TextStyle(
-                                color: ColorManager.lightTextColor,
-                                fontWeight: FontWeightManager.semiBold,
-                              ),
+                              style: Theme.of(context).textTheme.displayMedium,
                             ),
                           ],
                         ),
