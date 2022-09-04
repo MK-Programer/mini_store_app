@@ -44,7 +44,12 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           title: const Text(AppStrings.home),
           leading: AppBarIcons(
-            function: () {},
+            function: () {
+              Navigator.pushNamed(
+                context,
+                Routes.categoriesRoute,
+              );
+            },
             icon: IconManager.categoryBold,
           ),
           actions: [

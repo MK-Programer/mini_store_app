@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:mini_store_app/resources/string_manager.dart';
+import 'package:mini_store_app/widgets/category_widget.dart';
 
-import '../resources/string_manager.dart';
 import '../resources/values_manager.dart';
-import '../services/utils.dart';
-import '../widgets/feeds_widget.dart';
 
-class FeedsScreen extends StatelessWidget {
-  const FeedsScreen({Key? key}) : super(key: key);
+class CategoriesScreen extends StatelessWidget {
+  const CategoriesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Size size = Utils(context).getScreenSize;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppStrings.allProducts),
+        title: const Text(AppStrings.categories),
       ),
       body: GridView.builder(
         // physics: const NeverScrollableScrollPhysics(),
         // shrinkWrap: true,
         itemCount: 3,
         itemBuilder: (context, index) {
-          return const FeedsWidget();
+          return const CategoryWidget();
         },
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: AppSize.s2.toInt(),
           crossAxisSpacing: AppMargin.m0,
           mainAxisSpacing: AppMargin.m0,
-          childAspectRatio: size.width / (size.height * AppSize.s0_75),
+          childAspectRatio: AppSize.s1_2,
         ),
       ),
     );
