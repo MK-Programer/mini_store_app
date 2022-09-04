@@ -5,6 +5,7 @@ import 'package:mini_store_app/resources/icon_manager.dart';
 import 'package:mini_store_app/resources/route_manager.dart';
 import 'package:mini_store_app/resources/string_manager.dart';
 import 'package:mini_store_app/resources/values_manager.dart';
+import 'package:mini_store_app/services/api_handler.dart';
 import 'package:mini_store_app/services/utils.dart';
 
 import '../widgets/appbar_icons.dart';
@@ -31,6 +32,12 @@ class _HomeScreenState extends State<HomeScreen> {
   void dispose() {
     _searchEditingController.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    APIHandler.getAllProducts();
+    super.didChangeDependencies();
   }
 
   @override
