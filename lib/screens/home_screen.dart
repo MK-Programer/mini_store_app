@@ -1,5 +1,7 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_store_app/models/products_model.dart';
+import 'package:mini_store_app/providers/products_provider.dart';
 import 'package:mini_store_app/resources/color_manager.dart';
 import 'package:mini_store_app/resources/icon_manager.dart';
 import 'package:mini_store_app/resources/route_manager.dart';
@@ -7,6 +9,7 @@ import 'package:mini_store_app/resources/string_manager.dart';
 import 'package:mini_store_app/resources/values_manager.dart';
 import 'package:mini_store_app/services/api_handler.dart';
 import 'package:mini_store_app/services/utils.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/appbar_icons.dart';
 import '../widgets/feeds_widget.dart';
@@ -36,13 +39,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void didChangeDependencies() {
-    APIHandler.getAllProducts();
+    getAllProducts();
     super.didChangeDependencies();
+  }
+
+  Future<void> getAllProducts() async {
+    await Provider.of<ProductsProvider>(context, listen: false).fetchProducts();
   }
 
   @override
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
+    final productsProvider = Provider.of<ProductsProvider>(context);
+    final List<ProductsModel> productsList = productsProvider.getProducts;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -138,21 +147,29 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-                      GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: 3,
-                        itemBuilder: (context, index) {
-                          return const FeedsWidget();
-                        },
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: AppSize.s2.toInt(),
-                          crossAxisSpacing: AppMargin.m0,
-                          mainAxisSpacing: AppMargin.m0,
-                          childAspectRatio:
-                              size.width / (size.height * AppSize.s0_7),
-                        ),
-                      ),
+                      productsList.isEmpty
+                          ? Container()
+                          : GridView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: productsList.length > 4
+                                  ? 4
+                                  : productsList.length,
+                              itemBuilder: (context, index) {
+                                return ChangeNotifierProvider.value(
+                                  value: productsList[index],
+                                  child: const FeedsWidget(),
+                                );
+                              },
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: AppSize.s2.toInt(),
+                                crossAxisSpacing: AppMargin.m0,
+                                mainAxisSpacing: AppMargin.m0,
+                                childAspectRatio:
+                                    size.width / (size.height * AppSize.s0_8),
+                              ),
+                            ),
                     ],
                   ),
                 ),

@@ -1,10 +1,12 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_store_app/models/products_model.dart';
 import 'package:mini_store_app/resources/icon_manager.dart';
 import 'package:mini_store_app/resources/route_manager.dart';
 import 'package:mini_store_app/resources/string_manager.dart';
 import 'package:mini_store_app/resources/values_manager.dart';
 import 'package:mini_store_app/services/utils.dart';
+import 'package:provider/provider.dart';
 
 import '../resources/color_manager.dart';
 
@@ -14,6 +16,7 @@ class FeedsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
+    final productsModel = Provider.of<ProductsModel>(context);
     return Padding(
       padding: const EdgeInsets.all(AppPadding.p2),
       child: Material(
@@ -42,7 +45,7 @@ class FeedsWidget extends StatelessWidget {
                           style: Theme.of(context).textTheme.labelMedium,
                           children: [
                             TextSpan(
-                              text: '168.00',
+                              text: '${productsModel.price}',
                               style: Theme.of(context).textTheme.displayMedium,
                             ),
                           ],
@@ -59,7 +62,7 @@ class FeedsWidget extends StatelessWidget {
                 child: FancyShimmerImage(
                   height: size.height * AppSize.s0_2,
                   width: double.infinity,
-                  imageUrl: 'https://placeimg.com/640/480/any',
+                  imageUrl: productsModel.images![0],
                   errorWidget: const Icon(
                     IconManager.dangerBold,
                     color: ColorManager.red,
@@ -72,7 +75,7 @@ class FeedsWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(AppPadding.p8),
                 child: Text(
-                  'Title',
+                  '${productsModel.title}',
                   style: Theme.of(context).textTheme.titleMedium,
                   maxLines: AppSize.s2.toInt(),
                 ),
