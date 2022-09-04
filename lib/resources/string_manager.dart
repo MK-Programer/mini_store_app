@@ -7,4 +7,5 @@ class AppStrings {
   static const String description = 'Description';
   static const String dollarSign = '\$';
   static const String categories = 'Categories';
+  static const String allUsers = 'All Users';
 }

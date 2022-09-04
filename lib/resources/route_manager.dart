@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mini_store_app/screens/categories_screen.dart';
+import 'package:mini_store_app/screens/users_screen.dart';
 import '../resources/string_manager.dart';
 import '../screens/home_screen.dart';
 import '../screens/product_details.dart';
@@ -12,6 +13,7 @@ class Routes {
   static const String feedsRoute = '/FeedsScreen';
   static const String productDetailsRoute = '/ProductDetailsScreen';
   static const String categoriesRoute = '/CategoriesScreen';
+  static const String usersRoute = '/UsersScreen';
 }
 
 class RouteGenerator {
@@ -36,6 +38,11 @@ class RouteGenerator {
         return PageTransition(
           type: PageTransitionType.fade,
           child: const CategoriesScreen(),
+        );
+      case Routes.usersRoute:
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: const UsersScreen(),
         );
       default:
         return unDefinedRoute();

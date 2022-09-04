@@ -59,7 +59,7 @@ class FeedsWidget extends StatelessWidget {
                 child: FancyShimmerImage(
                   height: size.height * AppSize.s0_2,
                   width: double.infinity,
-                  imageUrl: 'https://i.ibb.co/vwB46Yq/shoes.png',
+                  imageUrl: 'https://placeimg.com/640/480/any',
                   errorWidget: const Icon(
                     IconManager.dangerBold,
                     color: ColorManager.red,

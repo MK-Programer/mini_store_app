@@ -54,7 +54,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           actions: [
             AppBarIcons(
-              function: () {},
+              function: () {
+                Navigator.pushNamed(context, Routes.usersRoute);
+              },
               icon: IconManager.user3Bold,
             ),
           ],
@@ -141,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           crossAxisSpacing: AppMargin.m0,
                           mainAxisSpacing: AppMargin.m0,
                           childAspectRatio:
-                              size.width / (size.height * AppSize.s0_75),
+                              size.width / (size.height * AppSize.s0_7),
                         ),
                       ),
                     ],

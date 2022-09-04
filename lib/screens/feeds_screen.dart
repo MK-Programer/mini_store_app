@@ -26,7 +26,7 @@ class FeedsScreen extends StatelessWidget {
           crossAxisCount: AppSize.s2.toInt(),
           crossAxisSpacing: AppMargin.m0,
           mainAxisSpacing: AppMargin.m0,
-          childAspectRatio: size.width / (size.height * AppSize.s0_75),
+          childAspectRatio: size.width / (size.height * AppSize.s0_7),
         ),
       ),
     );

@@ -21,7 +21,7 @@ class CategoryWidget extends StatelessWidget {
             child: FancyShimmerImage(
               height: size.width * AppSize.s0_45,
               width: size.width * AppSize.s0_45,
-              imageUrl: 'https://i.ibb.co/vwB46Yq/shoes.png',
+              imageUrl: 'https://placeimg.com/640/480/any',
               errorWidget: const Icon(
                 IconManager.dangerBold,
                 color: ColorManager.red,

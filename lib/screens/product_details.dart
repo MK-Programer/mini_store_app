@@ -86,7 +86,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   itemCount: 3,
                   itemBuilder: (context, index) {
                     return FancyShimmerImage(
-                      imageUrl: 'https://i.ibb.co/vwB46Yq/shoes.png',
+                      imageUrl: 'https://placeimg.com/640/480/any',
                       boxFit: BoxFit.fill,
                     );
                   },
