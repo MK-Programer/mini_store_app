@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_store_app/fetch_data_screen.dart';
 import 'package:mini_store_app/screens/categories_screen.dart';
 import 'package:mini_store_app/screens/users_screen.dart';
 import '../resources/string_manager.dart';
@@ -9,6 +10,7 @@ import 'package:page_transition/page_transition.dart';
 import '../screens/feeds_screen.dart';
 
 class Routes {
+  static const String fetchRoute = '/FetchDataScreen';
   static const String homeRoute = '/HomeScreen';
   static const String feedsRoute = '/FeedsScreen';
   static const String productDetailsRoute = '/ProductDetailsScreen';
@@ -19,6 +21,11 @@ class Routes {
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
+      case Routes.fetchRoute:
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: const FetchDataScreen(),
+        );
       case Routes.homeRoute:
         return PageTransition(
           type: PageTransitionType.fade,

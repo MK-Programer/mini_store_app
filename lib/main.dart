@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mini_store_app/providers/categories_provider.dart';
 import 'package:mini_store_app/providers/products_provider.dart';
 import 'package:mini_store_app/resources/route_manager.dart';
 import 'package:mini_store_app/resources/theme_manager.dart';
@@ -26,12 +27,17 @@ class MyApp extends StatelessWidget {
             return ProductsProvider();
           },
         ),
+        ChangeNotifierProvider(
+          create: (_) {
+            return CategoriesProvider();
+          },
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Mini Store APP',
         theme: ThemeManager.themeData(),
-        initialRoute: Routes.homeRoute,
+        initialRoute: Routes.fetchRoute,
         onGenerateRoute: RouteGenerator.getRoute,
       ),
     );

@@ -1,6 +1,5 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:mini_store_app/providers/products_provider.dart';
 import 'package:mini_store_app/resources/color_manager.dart';
 import 'package:mini_store_app/resources/icon_manager.dart';
 import 'package:mini_store_app/resources/route_manager.dart';
@@ -8,8 +7,6 @@ import 'package:mini_store_app/resources/string_manager.dart';
 import 'package:mini_store_app/resources/values_manager.dart';
 import 'package:mini_store_app/services/utils.dart';
 import 'package:mini_store_app/widgets/feeds_grid.dart';
-import 'package:provider/provider.dart';
-
 import '../widgets/appbar_icons.dart';
 import '../widgets/onsale_widget.dart';
 
@@ -26,7 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     _searchEditingController = TextEditingController();
-    getAllProducts();
     super.initState();
   }
 
@@ -34,10 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void dispose() {
     _searchEditingController.dispose();
     super.dispose();
-  }
-
-  Future<void> getAllProducts() async {
-    await Provider.of<ProductsProvider>(context, listen: false).fetchProducts();
   }
 
   @override

@@ -10,7 +10,7 @@ class ProductsProvider with ChangeNotifier {
   }
 
   Future<void> fetchProducts() async {
-    var data = await APIHandler.getAllProducts();
+    var data = await APIHandler.getData(target: 'products');
     for (var item in data) {
       productsList.add(ProductsModel.fromJson(item));
     }
