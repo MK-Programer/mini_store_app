@@ -1,6 +1,8 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:mini_store_app/resources/font_manager.dart';
+import 'package:mini_store_app/models/users_model.dart';
+import 'package:provider/provider.dart';
+import '../resources/font_manager.dart';
 
 import '../resources/color_manager.dart';
 import '../resources/icon_manager.dart';
@@ -13,12 +15,12 @@ class UsersWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
-
+    final usersModel = Provider.of<UserModel>(context);
     return ListTile(
       leading: FancyShimmerImage(
         height: size.width * AppSize.s0_15,
         width: size.width * AppSize.s0_15,
-        imageUrl: 'https://placeimg.com/640/480/any',
+        imageUrl: usersModel.avatar.toString(),
         errorWidget: const Icon(
           IconManager.dangerBold,
           color: ColorManager.red,
@@ -27,19 +29,19 @@ class UsersWidget extends StatelessWidget {
         boxFit: BoxFit.fill,
       ),
       title: Text(
-        'User name',
+        usersModel.name.toString(),
         style: Theme.of(context).textTheme.headlineMedium,
       ),
       subtitle: Text(
-        'Email@email.com',
+        usersModel.email.toString(),
         style: Theme.of(context).textTheme.subtitle1!.copyWith(
               fontSize: FontSize.s14,
               fontWeight: FontWeightManager.normal,
             ),
       ),
-      trailing: const Text(
-        'User role',
-        style: TextStyle(
+      trailing: Text(
+        usersModel.role.toString(),
+        style: const TextStyle(
           color: ColorManager.lightIconsColor,
           fontWeight: FontWeightManager.bold,
         ),

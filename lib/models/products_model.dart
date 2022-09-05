@@ -2,15 +2,15 @@ import 'package:flutter/cupertino.dart';
 
 import 'categories_model.dart';
 
-class ProductsModel with ChangeNotifier {
+class ProductModel with ChangeNotifier {
   int? id;
   String? title;
   int? price;
   String? description;
-  CategoriesModel? category;
+  CategoryModel? category;
   List<String>? images;
 
-  ProductsModel({
+  ProductModel({
     this.id,
     this.title,
     this.price,
@@ -19,14 +19,14 @@ class ProductsModel with ChangeNotifier {
     this.images,
   });
 
-  factory ProductsModel.fromJson(Map<String, dynamic> json) {
-    return ProductsModel(
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
       id: json['id'],
       title: json['title'],
       price: json['price'],
       description: json['description'],
       category: json['category'] != null
-          ? CategoriesModel.fromJson(json['category'])
+          ? CategoryModel.fromJson(json['category'])
           : null,
       images: json['images'].cast<String>(),
     );

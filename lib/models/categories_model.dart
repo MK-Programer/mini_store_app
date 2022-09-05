@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 
-class CategoriesModel with ChangeNotifier {
+class CategoryModel with ChangeNotifier {
   int? id;
   String? name;
   String? image;
 
-  CategoriesModel({
+  CategoryModel({
     this.id,
     this.name,
     this.image,
   });
 
-  factory CategoriesModel.fromJson(Map<String, dynamic> json) {
-    return CategoriesModel(
+  factory CategoryModel.fromJson(Map<String, dynamic> json) {
+    return CategoryModel(
       id: json['id'],
       name: json['name'],
       image: json['image'],

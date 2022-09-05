@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mini_store_app/providers/categories_provider.dart';
-import 'package:mini_store_app/providers/products_provider.dart';
-import 'package:mini_store_app/resources/route_manager.dart';
-import 'package:mini_store_app/resources/theme_manager.dart';
+import '../providers/categories_provider.dart';
+import '../providers/products_provider.dart';
+import '../providers/users_provider.dart';
+import '../resources/route_manager.dart';
+import '../resources/theme_manager.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -30,6 +31,11 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) {
             return CategoriesProvider();
+          },
+        ),
+        ChangeNotifierProvider(
+          create: (_) {
+            return UsersProvider();
           },
         ),
       ],

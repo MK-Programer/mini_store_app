@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mini_store_app/providers/categories_provider.dart';
-import 'package:mini_store_app/resources/string_manager.dart';
+import '../providers/categories_provider.dart';
+import '../resources/string_manager.dart';
 import 'package:provider/provider.dart';
 
 import '../resources/values_manager.dart';

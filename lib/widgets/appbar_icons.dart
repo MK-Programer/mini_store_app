@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mini_store_app/resources/values_manager.dart';
+import '../resources/values_manager.dart';
 
 class AppBarIcons extends StatelessWidget {
   final Function function;

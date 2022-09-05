@@ -1,12 +1,12 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:mini_store_app/resources/color_manager.dart';
-import 'package:mini_store_app/resources/icon_manager.dart';
-import 'package:mini_store_app/resources/route_manager.dart';
-import 'package:mini_store_app/resources/string_manager.dart';
-import 'package:mini_store_app/resources/values_manager.dart';
-import 'package:mini_store_app/services/utils.dart';
-import 'package:mini_store_app/widgets/feeds_grid.dart';
+import '../resources/color_manager.dart';
+import '../resources/icon_manager.dart';
+import '../resources/route_manager.dart';
+import '../resources/string_manager.dart';
+import '../resources/values_manager.dart';
+import '../services/utils.dart';
+import '../widgets/feeds_grid.dart';
 import '../widgets/appbar_icons.dart';
 import '../widgets/onsale_widget.dart';
 

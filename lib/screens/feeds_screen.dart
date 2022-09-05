@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mini_store_app/widgets/feeds_grid.dart';
+import '../widgets/feeds_grid.dart';
 
 import '../resources/string_manager.dart';
 

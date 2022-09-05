@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_store_app/providers/users_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/categories_provider.dart';
@@ -21,8 +22,9 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
       Duration.zero,
       () async {
         setState(() => _isLoading = true);
-        await getAllCategories();
-        await getAllProducts();
+        await getCategories();
+        await getProducts();
+        await getUsers();
         setState(() => _isLoading = false);
         // ignore: use_build_context_synchronously
         Navigator.pushReplacementNamed(
@@ -35,13 +37,17 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
     super.initState();
   }
 
-  Future<void> getAllCategories() async {
+  Future<void> getCategories() async {
     await Provider.of<CategoriesProvider>(context, listen: false)
         .fetchCategories();
   }
 
-  Future<void> getAllProducts() async {
+  Future<void> getProducts() async {
     await Provider.of<ProductsProvider>(context, listen: false).fetchProducts();
+  }
+
+  Future<void> getUsers() async {
+    await Provider.of<UsersProvider>(context, listen: false).fetchUsers();
   }
 
   @override

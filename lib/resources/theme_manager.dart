@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mini_store_app/resources/color_manager.dart';
-import 'package:mini_store_app/resources/font_manager.dart';
-import 'package:mini_store_app/resources/values_manager.dart';
+import '../resources/color_manager.dart';
+import '../resources/font_manager.dart';
+import '../resources/values_manager.dart';
 
 class ThemeManager {
   static ThemeData themeData() {

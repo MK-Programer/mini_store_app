@@ -19,7 +19,7 @@ class FeedsGrid extends StatelessWidget {
     Size size = Utils(context).getScreenSize;
 
     final productsProvider = Provider.of<ProductsProvider>(context);
-    final List<ProductsModel> productsList = productsProvider.getProducts;
+    final List<ProductModel> productsList = productsProvider.getProducts;
     return productsList.isEmpty
         ? const Center(
             child: CircularProgressIndicator(),

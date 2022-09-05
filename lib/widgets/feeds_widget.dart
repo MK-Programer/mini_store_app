@@ -1,11 +1,11 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:mini_store_app/models/products_model.dart';
-import 'package:mini_store_app/resources/icon_manager.dart';
-import 'package:mini_store_app/resources/route_manager.dart';
-import 'package:mini_store_app/resources/string_manager.dart';
-import 'package:mini_store_app/resources/values_manager.dart';
-import 'package:mini_store_app/services/utils.dart';
+import '../models/products_model.dart';
+import '../resources/icon_manager.dart';
+import '../resources/route_manager.dart';
+import '../resources/string_manager.dart';
+import '../resources/values_manager.dart';
+import '../services/utils.dart';
 import 'package:provider/provider.dart';
 
 import '../resources/color_manager.dart';
@@ -16,7 +16,7 @@ class FeedsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
-    final productsModel = Provider.of<ProductsModel>(context);
+    final productsModel = Provider.of<ProductModel>(context);
     return Padding(
       padding: const EdgeInsets.all(AppPadding.p2),
       child: Material(
@@ -24,7 +24,11 @@ class FeedsWidget extends StatelessWidget {
         color: Theme.of(context).cardColor,
         child: InkWell(
           onTap: () {
-            Navigator.pushNamed(context, Routes.productDetailsRoute);
+            Navigator.pushNamed(
+              context,
+              Routes.productDetailsRoute,
+              arguments: productsModel.id,
+            );
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

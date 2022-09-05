@@ -1,6 +1,6 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:mini_store_app/models/categories_model.dart';
+import '../models/categories_model.dart';
 import 'package:provider/provider.dart';
 import '../services/utils.dart';
 
@@ -14,7 +14,7 @@ class CategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
-    final categoriesModel = Provider.of<CategoriesModel>(context);
+    final categoriesModel = Provider.of<CategoryModel>(context);
     return Padding(
       padding: const EdgeInsets.all(AppPadding.p8),
       child: Stack(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mini_store_app/resources/values_manager.dart';
-import 'package:mini_store_app/services/utils.dart';
+import '../resources/values_manager.dart';
+import '../services/utils.dart';
 
 import '../resources/color_manager.dart';
 

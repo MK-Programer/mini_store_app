@@ -2,7 +2,7 @@ import 'dart:convert';
 
 // ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
-import 'package:mini_store_app/services/api_consts.dart';
+import '../services/api_consts.dart';
 
 class APIHandler {
   static Future<dynamic> getData({

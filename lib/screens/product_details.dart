@@ -1,10 +1,12 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:mini_store_app/resources/font_manager.dart';
-import 'package:mini_store_app/resources/string_manager.dart';
-import 'package:mini_store_app/resources/values_manager.dart';
-import 'package:mini_store_app/services/utils.dart';
+import 'package:provider/provider.dart';
+import '../providers/products_provider.dart';
+import '../resources/font_manager.dart';
+import '../resources/string_manager.dart';
+import '../resources/values_manager.dart';
+import '../services/utils.dart';
 
 import '../resources/color_manager.dart';
 
@@ -14,6 +16,9 @@ class ProductDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
+    final productId = ModalRoute.of(context)!.settings.arguments as int;
+    final productsProvider = Provider.of<ProductsProvider>(context);
+    final currentProduct = productsProvider.findProdById(productId: productId);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -29,7 +34,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Category',
+                      '${currentProduct.category!.name}',
                       style: Theme.of(context).textTheme.headlineLarge,
                     ),
                     const SizedBox(
@@ -41,7 +46,7 @@ class ProductDetailsScreen extends StatelessWidget {
                         Flexible(
                           flex: AppSize.s3.toInt(),
                           child: Text(
-                            'Lorem Ipsum',
+                            '${currentProduct.title}',
                             textAlign: TextAlign.start,
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
@@ -59,7 +64,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                   ),
                               children: [
                                 TextSpan(
-                                  text: '168.00',
+                                  text: '${currentProduct.price}',
                                   style: Theme.of(context)
                                       .textTheme
                                       .displayMedium!
@@ -83,10 +88,10 @@ class ProductDetailsScreen extends StatelessWidget {
                 height: size.height * AppMargin.m0_4,
                 child: Swiper(
                   autoplay: true,
-                  itemCount: 3,
+                  itemCount: currentProduct.images!.length,
                   itemBuilder: (context, index) {
                     return FancyShimmerImage(
-                      imageUrl: 'https://placeimg.com/640/480/any',
+                      imageUrl: currentProduct.images![index],
                       boxFit: BoxFit.fill,
                     );
                   },
@@ -115,7 +120,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       height: AppMargin.m10,
                     ),
                     Text(
-                      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                      '${currentProduct.description}',
                       textAlign: TextAlign.justify,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontSize: FontSize.s18,
