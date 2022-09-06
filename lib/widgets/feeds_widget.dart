@@ -66,6 +66,9 @@ class FeedsWidget extends StatelessWidget {
                 child: FancyShimmerImage(
                   height: size.height * AppSize.s0_2,
                   width: double.infinity,
+                  // imageUrl: productsModel.images![0] == ''
+                  //     ? 'https://i.ibb.co/vwB46Yq/shoes.png'
+                  //     : productsModel.images![0],
                   imageUrl: productsModel.images![0],
                   errorWidget: const Icon(
                     IconManager.dangerBold,

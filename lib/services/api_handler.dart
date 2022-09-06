@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 // ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
@@ -8,12 +9,19 @@ class APIHandler {
   static Future<dynamic> getData({
     required String target,
   }) async {
-    var uri =
-        Uri.https(APIConsts.BASE_URL, '${APIConsts.UNENCODED_PATH}$target/');
-    var response = await http.get(uri);
-    // log('response ${jsonDecode(response.body)}');
-    var data = jsonDecode(response.body);
-
-    return data;
+    try {
+      var uri =
+          Uri.https(APIConsts.BASE_URL, '${APIConsts.UNENCODED_PATH}$target');
+      var response = await http.get(uri);
+      // log('response ${jsonDecode(response.body)}');
+      var data = jsonDecode(response.body);
+      if (response.statusCode != 200) {
+        throw data['message'];
+      }
+      return data;
+    } catch (error) {
+      log('An error occuredd, $error');
+      throw error.toString();
+    }
   }
 }

@@ -15,22 +15,26 @@ class FetchDataScreen extends StatefulWidget {
 
 class _FetchDataScreenState extends State<FetchDataScreen> {
   bool _isLoading = false;
-
+  String errorText = '';
   @override
   void initState() {
     Future.delayed(
       Duration.zero,
       () async {
-        setState(() => _isLoading = true);
-        await getCategories();
-        await getProducts();
-        await getUsers();
-        setState(() => _isLoading = false);
-        // ignore: use_build_context_synchronously
-        Navigator.pushReplacementNamed(
-          context,
-          Routes.homeRoute,
-        );
+        try {
+          setState(() => _isLoading = true);
+          await getCategories();
+          await getProducts();
+          await getUsers();
+          setState(() => _isLoading = false);
+          // ignore: use_build_context_synchronously
+          Navigator.pushReplacementNamed(
+            context,
+            Routes.homeRoute,
+          );
+        } catch (error) {
+          setState(() => errorText = 'An error occurred, $error');
+        }
       },
     );
 
@@ -53,11 +57,11 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _isLoading
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : const SizedBox(),
+      body: Center(
+        child: _isLoading && errorText == ''
+            ? const CircularProgressIndicator()
+            : Text(errorText),
+      ),
     );
   }
 }
