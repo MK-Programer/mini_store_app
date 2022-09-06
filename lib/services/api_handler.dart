@@ -8,10 +8,18 @@ import '../services/api_consts.dart';
 class APIHandler {
   static Future<dynamic> getData({
     required String target,
+    String? limit,
   }) async {
     try {
-      var uri =
-          Uri.https(APIConsts.BASE_URL, '${APIConsts.UNENCODED_PATH}$target');
+      var uri = Uri.https(
+          APIConsts.BASE_URL,
+          '${APIConsts.UNENCODED_PATH}$target',
+          target == 'products'
+              ? {
+                  'offset': "0",
+                  'limit': limit,
+                }
+              : {});
       var response = await http.get(uri);
       // log('response ${jsonDecode(response.body)}');
       var data = jsonDecode(response.body);

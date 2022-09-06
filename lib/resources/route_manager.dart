@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../fetch_data_screen.dart';
+import '../screens/fetch_data_screen.dart';
 import '../screens/categories_screen.dart';
 import '../screens/users_screen.dart';
 import '../resources/string_manager.dart';

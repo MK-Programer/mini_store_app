@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mini_store_app/providers/users_provider.dart';
+import 'package:mini_store_app/resources/values_manager.dart';
 import 'package:provider/provider.dart';
 
-import 'providers/categories_provider.dart';
-import 'providers/products_provider.dart';
-import 'resources/route_manager.dart';
+import '../providers/categories_provider.dart';
+import '../providers/products_provider.dart';
+import '../resources/route_manager.dart';
 
 class FetchDataScreen extends StatefulWidget {
   const FetchDataScreen({Key? key}) : super(key: key);
@@ -47,7 +48,9 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
   }
 
   Future<void> getProducts() async {
-    await Provider.of<ProductsProvider>(context, listen: false).fetchProducts();
+    await Provider.of<ProductsProvider>(context, listen: false).fetchProducts(
+      limit: "${AppSize.s4}",
+    );
   }
 
   Future<void> getUsers() async {

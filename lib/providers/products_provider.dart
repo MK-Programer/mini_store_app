@@ -12,8 +12,13 @@ class ProductsProvider with ChangeNotifier {
     return productsList;
   }
 
-  Future<void> fetchProducts() async {
-    var data = await APIHandler.getData(target: 'products');
+  Future<void> fetchProducts({
+    required String limit,
+  }) async {
+    var data = await APIHandler.getData(
+      target: 'products',
+      limit: limit,
+    );
     for (var item in data) {
       // var images = item['images'].cast<String>();
       // for (int i = 0; i < images.length; i++) {
