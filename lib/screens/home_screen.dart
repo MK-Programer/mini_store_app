@@ -1,7 +1,7 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import '../resources/color_manager.dart';
-import '../resources/icon_manager.dart';
+import '../resources/icons_manager.dart';
 import '../resources/route_manager.dart';
 import '../resources/string_manager.dart';
 import '../resources/values_manager.dart';
@@ -58,6 +58,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.pushNamed(context, Routes.usersRoute);
               },
               icon: IconManager.user3Bold,
+            ),
+            // TODO: Implement the localization
+            AppBarIcons(
+              function: () {
+                return null;
+              },
+              icon: IconManager.language,
             ),
           ],
         ),

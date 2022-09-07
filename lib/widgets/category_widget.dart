@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../services/utils.dart';
 
 import '../resources/color_manager.dart';
-import '../resources/icon_manager.dart';
+import '../resources/icons_manager.dart';
 import '../resources/values_manager.dart';
 
 class CategoryWidget extends StatelessWidget {

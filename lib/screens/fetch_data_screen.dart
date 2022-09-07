@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:mini_store_app/providers/users_provider.dart';
+import 'package:mini_store_app/services/error_handler.dart';
+import 'package:mini_store_app/resources/string_manager.dart';
 import 'package:mini_store_app/resources/values_manager.dart';
 import 'package:provider/provider.dart';
 
@@ -35,7 +39,10 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
             Routes.homeRoute,
           );
         } catch (error) {
-          setState(() => errorText = 'An error occurred, $error');
+          Failure failure = handleError(int.parse(error.toString()));
+          // print(failure.message);
+          setState(() =>
+              errorText = '${AppStrings.anErrorOccurred}, ${failure.message}');
         }
       },
     );

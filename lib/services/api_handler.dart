@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 // ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
+import 'package:mini_store_app/services/error_handler.dart';
 import '../services/api_consts.dart';
 
 class APIHandler {
@@ -19,15 +21,13 @@ class APIHandler {
                 }
               : {});
       var response = await http.get(uri);
-      // log('response ${jsonDecode(response.body)}');
       var data = jsonDecode(response.body);
       if (response.statusCode != 200) {
-        throw data['message'];
+        throw data['statusCode'];
       }
       return data;
     } catch (error) {
-      log('An error occuredd, $error');
-      throw error.toString();
+      throw ResponseCode.DEFAULT;
     }
   }
 }

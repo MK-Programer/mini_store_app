@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
 class IconManager {
@@ -7,4 +8,5 @@ class IconManager {
   static const heartBold = IconlyBold.heart;
   static const dangerBold = IconlyBold.danger;
   static const arrowRight2Bold = IconlyBold.arrowRight2;
+  static const language = Icons.language_outlined;
 }

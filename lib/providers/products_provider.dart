@@ -10,8 +10,8 @@ import '../services/api_handler.dart';
 class ProductsProvider with ChangeNotifier {
   static List<ProductModel> productsList = [];
   static int productsCount = AppSize.s18.toInt();
-  int offset = 0;
-  int limit = 0;
+  int offset = AppSize.s0.toInt();
+  int limit = AppSize.s0.toInt();
 
   List<ProductModel> get getProducts {
     return productsList;

@@ -1,7 +1,7 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import '../models/products_model.dart';
-import '../resources/icon_manager.dart';
+import '../resources/icons_manager.dart';
 import '../resources/route_manager.dart';
 import '../resources/string_manager.dart';
 import '../resources/values_manager.dart';

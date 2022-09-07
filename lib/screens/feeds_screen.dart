@@ -3,6 +3,7 @@ import 'package:mini_store_app/resources/font_manager.dart';
 import 'package:mini_store_app/resources/values_manager.dart';
 import 'package:provider/provider.dart';
 import '../providers/products_provider.dart';
+import '../services/error_handler.dart';
 import '../widgets/feeds_grid.dart';
 
 import '../resources/string_manager.dart';
@@ -21,6 +22,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
   bool _isLoading = false;
   bool _isLimit = false;
   final ScrollController _scrollController = ScrollController();
+  String errorText = '';
 
   @override
   void initState() {
@@ -29,27 +31,33 @@ class _FeedsScreenState extends State<FeedsScreen> {
   }
 
   Future<void> getProducts() async {
-    setState(() => _isLimit = false);
-    productsCount =
-        Provider.of<ProductsProvider>(context, listen: false).getProductsCount;
-    currentLimit =
-        Provider.of<ProductsProvider>(context, listen: false).getLimit;
-    if (currentLimit < productsCount) {
-      int diff = productsCount - currentLimit;
-      if (diff >= AppSize.s10) {
-        //* I want to take only 10 */
-        limit = currentLimit + AppSize.s10.toInt();
+    try {
+      setState(() => _isLimit = false);
+      productsCount = Provider.of<ProductsProvider>(context, listen: false)
+          .getProductsCount;
+      currentLimit =
+          Provider.of<ProductsProvider>(context, listen: false).getLimit;
+      if (currentLimit < productsCount) {
+        int diff = productsCount - currentLimit;
+        if (diff >= AppSize.s10) {
+          //* I want to take only 10 */
+          limit = currentLimit + AppSize.s10.toInt();
+        } else {
+          limit = diff;
+        }
       } else {
-        limit = diff;
+        setState(() => _isLimit = true);
+        return;
       }
-    } else {
-      setState(() => _isLimit = true);
-      return;
+      await Provider.of<ProductsProvider>(context, listen: false).fetchProducts(
+        offset: "$currentLimit",
+        limit: "$limit",
+      );
+    } catch (error) {
+      Failure failure = handleError(int.parse(error.toString()));
+      setState(() =>
+          errorText = '${AppStrings.anErrorOccurred}, ${failure.message}');
     }
-    await Provider.of<ProductsProvider>(context, listen: false).fetchProducts(
-      offset: "$currentLimit",
-      limit: "$limit",
-    );
   }
 
   @override
@@ -88,37 +96,41 @@ class _FeedsScreenState extends State<FeedsScreen> {
       appBar: AppBar(
         title: const Text(AppStrings.allProducts),
       ),
-      body: SingleChildScrollView(
-        controller: _scrollController,
-        child: Column(
-          children: [
-            const FeedsGrid(isInMain: false),
-            Visibility(
-              visible: _isLoading || _isLimit,
-              child: Center(
-                child: _isLoading
-                    ? const CircularProgressIndicator()
-                    : Visibility(
-                        visible: _isLimit,
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.only(bottom: AppPadding.p16),
-                          child: Text(
-                            'No more products found',
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall!
-                                .copyWith(
-                                  fontSize: FontSize.s20,
+      body: errorText != ''
+          ? Center(
+              child: Text('${AppStrings.anErrorOccurred}, $errorText'),
+            )
+          : SingleChildScrollView(
+              controller: _scrollController,
+              child: Column(
+                children: [
+                  const FeedsGrid(isInMain: false),
+                  Visibility(
+                    visible: _isLoading || _isLimit,
+                    child: Center(
+                      child: _isLoading
+                          ? const CircularProgressIndicator()
+                          : Visibility(
+                              visible: _isLimit,
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    bottom: AppPadding.p16),
+                                child: Text(
+                                  AppStrings.noMoreProductsFound,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineSmall!
+                                      .copyWith(
+                                        fontSize: FontSize.s20,
+                                      ),
                                 ),
-                          ),
-                        ),
-                      ),
+                              ),
+                            ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
     );
   }
 }

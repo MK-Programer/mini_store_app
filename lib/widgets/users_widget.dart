@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../resources/font_manager.dart';
 
 import '../resources/color_manager.dart';
-import '../resources/icon_manager.dart';
+import '../resources/icons_manager.dart';
 import '../resources/values_manager.dart';
 import '../services/utils.dart';
 
