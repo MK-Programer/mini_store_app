@@ -117,7 +117,8 @@ class _FeedsScreenState extends State<FeedsScreen> {
                                 padding: const EdgeInsets.only(
                                     bottom: AppPadding.p16),
                                 child: Text(
-                                  AppStrings.noMoreProductsFound,
+                                  AppStrings.noMoreProductsFound
+                                      .localize(context),
                                   style: Theme.of(context)
                                       .textTheme
                                       .headlineSmall!
