@@ -17,6 +17,7 @@ class FetchDataScreen extends StatefulWidget {
 class _FetchDataScreenState extends State<FetchDataScreen> {
   bool _isLoading = false;
   String errorText = '';
+
   @override
   void initState() {
     Future.delayed(
@@ -48,8 +49,13 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
   }
 
   Future<void> getProducts() async {
+    int productsCount =
+        Provider.of<ProductsProvider>(context, listen: false).getProductsCount;
+
     await Provider.of<ProductsProvider>(context, listen: false).fetchProducts(
-      limit: "${AppSize.s4}",
+      limit: productsCount >= AppSize.s4.toInt()
+          ? "${AppSize.s4}"
+          : "$productsCount",
     );
   }
 

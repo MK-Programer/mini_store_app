@@ -17,7 +17,9 @@ class FeedsScreen extends StatefulWidget {
 }
 
 class _FeedsScreenState extends State<FeedsScreen> {
-  int limit = 10;
+  late int itemsToGet;
+  late int productsCount;
+  late int currentLimit;
   bool _isLoading = false;
   bool _isLimit = false;
   final ScrollController _scrollController = ScrollController();
@@ -29,8 +31,22 @@ class _FeedsScreenState extends State<FeedsScreen> {
   }
 
   Future<void> getProducts() async {
+    productsCount =
+        Provider.of<ProductsProvider>(context, listen: false).getProductsCount;
+    currentLimit =
+        Provider.of<ProductsProvider>(context, listen: false).getLimit;
+    if (currentLimit < productsCount) {
+      int diff = productsCount - currentLimit;
+      if (diff >= 10) {
+        itemsToGet = 10;
+      } else {
+        itemsToGet = diff;
+      }
+    } else {
+      return;
+    }
     await Provider.of<ProductsProvider>(context, listen: false).fetchProducts(
-      limit: "$limit",
+      limit: "$itemsToGet",
     );
   }
 
@@ -54,9 +70,9 @@ class _FeedsScreenState extends State<FeedsScreen> {
           _scrollController.position.maxScrollExtent) {
         setState(() {
           _isLoading = true;
-          limit += 10;
+          // limit += 10;
         });
-        log("Limit $limit");
+        // log("Limit $limit");
         await getProducts();
         setState(() => _isLoading = false);
       }

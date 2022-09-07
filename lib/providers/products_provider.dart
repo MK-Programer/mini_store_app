@@ -1,6 +1,7 @@
 // import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
+import 'package:mini_store_app/resources/values_manager.dart';
 import '../models/products_model.dart';
 // import 'package:http/http.dart' as http;
 
@@ -8,8 +9,19 @@ import '../services/api_handler.dart';
 
 class ProductsProvider with ChangeNotifier {
   static List<ProductModel> productsList = [];
+  static int productsCount = AppSize.s18.toInt();
+  int limit = 0;
+
   List<ProductModel> get getProducts {
     return productsList;
+  }
+
+  int get getProductsCount {
+    return productsCount;
+  }
+
+  int get getLimit {
+    return limit;
   }
 
   Future<void> fetchProducts({
@@ -30,6 +42,8 @@ class ProductsProvider with ChangeNotifier {
       //   print(item['id']);
       productsList.add(ProductModel.fromJson(item));
     }
+    this.limit += int.parse(limit);
+    // print(this.limit);
     notifyListeners();
   }
 
