@@ -1,7 +1,10 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
+import 'package:mini_store_app/resources/font_manager.dart';
 import '../resources/color_manager.dart';
 import '../resources/icons_manager.dart';
+import '../resources/language_manager.dart';
 import '../resources/route_manager.dart';
 import '../resources/string_manager.dart';
 import '../resources/values_manager.dart';
@@ -19,7 +22,22 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late TextEditingController _searchEditingController;
+  static const List<String> menuItems = [
+    "EN",
+    "AR",
+  ];
 
+  final List<DropdownMenuItem<String>> dropDownMenuItems = menuItems
+      .map(
+        (value) => DropdownMenuItem(
+          value: value,
+          child: Text(
+            value,
+          ),
+        ),
+      )
+      .toList();
+  String selected = "EN";
   @override
   void initState() {
     _searchEditingController = TextEditingController();
@@ -42,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(AppStrings.home),
+          title: Text(AppStrings.home.localize(context)),
           leading: AppBarIcons(
             function: () {
               Navigator.pushNamed(
@@ -59,13 +77,22 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               icon: IconManager.user3Bold,
             ),
-            // TODO: Implement the localization
-            AppBarIcons(
-              function: () {
-                return null;
-              },
-              icon: IconManager.language,
+            const SizedBox(
+              width: AppMargin.m8,
             ),
+            // TODO: Implement the localization
+            DropdownButton(
+              value: selected,
+              items: dropDownMenuItems,
+              onChanged: (value) async {
+                setState(() => selected = value.toString());
+                if (value == "EN") {
+                  LocaleNotifier.of(context)!.change('en');
+                } else {
+                  LocaleNotifier.of(context)!.change('ar');
+                }
+              },
+            )
           ],
         ),
         body: Padding(
@@ -78,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 controller: _searchEditingController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                  hintText: AppStrings.search,
+                  hintText: AppStrings.search.localize(context),
                   hintStyle: TextStyle(color: ColorManager.grey),
                   filled: true,
                   fillColor: Theme.of(context).cardColor,
@@ -125,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Row(
                         children: [
-                          Text(
+                          LocaleText(
                             AppStrings.latestProducts,
                             style: Theme.of(context).textTheme.headlineMedium,
                           ),
@@ -134,7 +161,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             function: () {
                               Navigator.pushNamed(context, Routes.feedsRoute);
                             },
-                            icon: IconManager.arrowRight2Bold,
+                            icon: selected == "EN"
+                                ? IconManager.arrowRight2Bold
+                                : IconManager.arrowLeft2Bold,
                           ),
                         ],
                       ),

@@ -1,0 +1,23 @@
+{
+    "home": "Home",
+    "search": "Search",
+    "latest_products": "Latest Products",
+    "no_route_found": "No Route Found",
+    "all_products": "All Products",
+    "description": "Description",
+ 
+    "categories": "Categories",
+    "all_users": "All Users",
+    "no_more_products_found": "No more products found",
+    "an_error_occurred": "An error occurred",
+    "success": "success",
+    "bad_request_error": "bad request. try again later",
+    "forbidden_error": "forbidden request. try again later",
+    "unauthorized_error": "user unauthorized, try again later",
+    "not_found_error": "url not found, try again later",
+    "conflict_error": "conflict found, try again later",
+    "internal_server_error": "some thing went wrong, try again later",
+    "default_error": "some thing went wrong, try again later",
+    "no_content": "success with not content"
+  
+}

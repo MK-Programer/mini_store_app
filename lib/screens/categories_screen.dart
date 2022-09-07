@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import '../providers/categories_provider.dart';
 import '../resources/string_manager.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +16,7 @@ class CategoriesScreen extends StatelessWidget {
     final categoriesList = categoriesProvider.getCategoriesList;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppStrings.categories),
+        title: Text(AppStrings.categories.localize(context)),
       ),
       body: categoriesList.isEmpty
           ? const Center(

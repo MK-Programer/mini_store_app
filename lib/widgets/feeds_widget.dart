@@ -49,7 +49,7 @@ class FeedsWidget extends StatelessWidget {
                           style: Theme.of(context).textTheme.labelMedium,
                           children: [
                             TextSpan(
-                              text: '${productsModel.price}',
+                              text: ' ${productsModel.price}',
                               style: Theme.of(context).textTheme.displayMedium,
                             ),
                           ],

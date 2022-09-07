@@ -1,15 +1,15 @@
 class AppStrings {
-  static const String home = 'Home';
-  static const String search = 'Search';
-  static const String latestProducts = 'Latest Products';
-  static const String noRouteFound = 'No Route Found';
-  static const String allProducts = 'All Products';
-  static const String description = 'Description';
+  static const String home = 'home';
+  static const String search = 'search';
+  static const String latestProducts = 'latest_products';
+  static const String noRouteFound = 'no_route_found';
+  static const String allProducts = 'all_products';
+  static const String description = 'description';
   static const String dollarSign = '\$';
-  static const String categories = 'Categories';
-  static const String allUsers = 'All Users';
-  static const String noMoreProductsFound = 'No more products found';
-  static const String anErrorOccurred = 'An error occurred';
+  static const String categories = 'categories';
+  static const String allUsers = 'all_users';
+  static const String noMoreProductsFound = 'no_more_products_found';
+  static const String anErrorOccurred = 'an_error_occurred';
   // error handler
   static const String success = "success";
   static const String badRequestError = "bad_request_error";

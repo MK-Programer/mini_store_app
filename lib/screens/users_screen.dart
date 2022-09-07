@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:mini_store_app/providers/users_provider.dart';
 import 'package:provider/provider.dart';
 import '../resources/string_manager.dart';
@@ -14,7 +15,7 @@ class UsersScreen extends StatelessWidget {
     final usersList = usersProvider.getUsers;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppStrings.allUsers),
+        title: Text(AppStrings.allUsers.localize(context)),
       ),
       body: usersList.isEmpty
           ? const Center(
