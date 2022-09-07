@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:mini_store_app/providers/users_provider.dart';
 import 'package:mini_store_app/services/error_handler.dart';
@@ -33,10 +31,12 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
           await getProducts();
           await getUsers();
           setState(() => _isLoading = false);
+          //*Update the push replacement to push and remove untill/
           // ignore: use_build_context_synchronously
-          Navigator.pushReplacementNamed(
+          Navigator.pushNamedAndRemoveUntil(
             context,
             Routes.homeRoute,
+            ModalRoute.withName('/'),
           );
         } catch (error) {
           Failure failure = handleError(int.parse(error.toString()));
