@@ -6,17 +6,15 @@ import 'package:http/http.dart' as http;
 import '../services/api_consts.dart';
 
 class APIHandler {
-  static Future<dynamic> getData({
-    required String target,
-    String? limit,
-  }) async {
+  static Future<dynamic> getData(
+      {required String target, String? offset, String? limit}) async {
     try {
       var uri = Uri.https(
           APIConsts.BASE_URL,
           '${APIConsts.UNENCODED_PATH}$target',
           target == 'products'
               ? {
-                  'offset': "0",
+                  'offset': offset,
                   'limit': limit,
                 }
               : {});

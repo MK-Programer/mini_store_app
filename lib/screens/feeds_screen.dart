@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:mini_store_app/resources/font_manager.dart';
 import 'package:mini_store_app/resources/values_manager.dart';
@@ -17,7 +15,7 @@ class FeedsScreen extends StatefulWidget {
 }
 
 class _FeedsScreenState extends State<FeedsScreen> {
-  late int itemsToGet;
+  late int limit;
   late int productsCount;
   late int currentLimit;
   bool _isLoading = false;
@@ -31,22 +29,26 @@ class _FeedsScreenState extends State<FeedsScreen> {
   }
 
   Future<void> getProducts() async {
+    setState(() => _isLimit = false);
     productsCount =
         Provider.of<ProductsProvider>(context, listen: false).getProductsCount;
     currentLimit =
         Provider.of<ProductsProvider>(context, listen: false).getLimit;
     if (currentLimit < productsCount) {
       int diff = productsCount - currentLimit;
-      if (diff >= 10) {
-        itemsToGet = 10;
+      if (diff >= AppSize.s10) {
+        //* I want to take only 10 */
+        limit = currentLimit + AppSize.s10.toInt();
       } else {
-        itemsToGet = diff;
+        limit = diff;
       }
     } else {
+      setState(() => _isLimit = true);
       return;
     }
     await Provider.of<ProductsProvider>(context, listen: false).fetchProducts(
-      limit: "$itemsToGet",
+      offset: "$currentLimit",
+      limit: "$limit",
     );
   }
 

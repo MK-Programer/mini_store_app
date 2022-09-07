@@ -51,11 +51,11 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
   Future<void> getProducts() async {
     int productsCount =
         Provider.of<ProductsProvider>(context, listen: false).getProductsCount;
-
+    int initLimit = AppSize.s4.toInt();
+    int initOffset = AppSize.s0.toInt();
     await Provider.of<ProductsProvider>(context, listen: false).fetchProducts(
-      limit: productsCount >= AppSize.s4.toInt()
-          ? "${AppSize.s4}"
-          : "$productsCount",
+      offset: "$initOffset",
+      limit: productsCount >= initLimit ? "$initLimit" : "$productsCount",
     );
   }
 

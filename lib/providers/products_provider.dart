@@ -10,6 +10,7 @@ import '../services/api_handler.dart';
 class ProductsProvider with ChangeNotifier {
   static List<ProductModel> productsList = [];
   static int productsCount = AppSize.s18.toInt();
+  int offset = 0;
   int limit = 0;
 
   List<ProductModel> get getProducts {
@@ -24,11 +25,15 @@ class ProductsProvider with ChangeNotifier {
     return limit;
   }
 
-  Future<void> fetchProducts({
-    required String limit,
-  }) async {
+  int get getOffset {
+    return offset;
+  }
+
+  Future<void> fetchProducts(
+      {required String offset, required String limit}) async {
     var data = await APIHandler.getData(
       target: 'products',
+      offset: offset,
       limit: limit,
     );
     for (var item in data) {
@@ -42,6 +47,7 @@ class ProductsProvider with ChangeNotifier {
       //   print(item['id']);
       productsList.add(ProductModel.fromJson(item));
     }
+    this.offset = int.parse(offset);
     this.limit += int.parse(limit);
     // print(this.limit);
     notifyListeners();
