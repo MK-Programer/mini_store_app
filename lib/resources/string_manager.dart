@@ -13,6 +13,10 @@ class AppStrings {
   static const String empty = '';
   static const String getTheSpecialDiscount = 'get_the_special_discount';
   static const String off = 'off';
+  static const String settings = 'settings';
+  static const String enLang = 'en_lang';
+  static const String arLang = 'ar_lang';
+  static const String chooseLang = 'choose_a_lang';
   // error handler
   static const String success = "success";
   static const String badRequestError = "bad_request_error";

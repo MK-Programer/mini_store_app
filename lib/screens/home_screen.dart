@@ -21,21 +21,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late TextEditingController _searchEditingController;
-  static List<String> menuItems = [
-    LanguageType.ENGLISH.getValue().toUpperCase(),
-    LanguageType.ARABIC.getValue().toUpperCase(),
-  ];
-
-  final List<DropdownMenuItem<String>> dropDownMenuItems = menuItems
-      .map(
-        (value) => DropdownMenuItem(
-          value: value,
-          child: Text(
-            value,
-          ),
-        ),
-      )
-      .toList();
 
   @override
   void initState() {
@@ -52,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
-    String selected = Utils(context).getCurrentLocale;
+    String currentLang = Utils(context).getCurrentLocale;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -76,23 +61,11 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               icon: IconManager.user3Bold,
             ),
-            const SizedBox(
-              width: AppMargin.m8,
-            ),
-            DropdownButton(
-              value: selected,
-              items: dropDownMenuItems,
-              onChanged: (value) async {
-                setState(() => selected = value.toString());
-                if (value == LanguageType.ENGLISH.getValue().toUpperCase()) {
-                  LocaleNotifier.of(context)!
-                      .change(LanguageType.ENGLISH.getValue());
-                } else {
-                  LocaleNotifier.of(context)!
-                      .change(LanguageType.ARABIC.getValue());
-                }
-              },
-            )
+            AppBarIcons(
+                function: () {
+                  Navigator.pushNamed(context, Routes.settingsRoute);
+                },
+                icon: IconManager.settingsBold),
           ],
         ),
         body: Padding(
@@ -161,7 +134,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             function: () {
                               Navigator.pushNamed(context, Routes.feedsRoute);
                             },
-                            icon: selected == menuItems[0] // EN
+                            icon: currentLang ==
+                                    LanguageType.ENGLISH
+                                        .getValue()
+                                        .toUpperCase() // EN
                                 ? IconManager.arrowRight2Bold
                                 : IconManager.arrowLeft2Bold,
                           ),

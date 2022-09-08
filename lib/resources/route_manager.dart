@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import '../screens/settings_screen.dart';
 import '../screens/fetch_data_screen.dart';
 import '../screens/categories_screen.dart';
 import '../screens/users_screen.dart';
@@ -17,6 +18,7 @@ class Routes {
   static const String productDetailsRoute = '/ProductDetailsScreen';
   static const String categoriesRoute = '/CategoriesScreen';
   static const String usersRoute = '/UsersScreen';
+  static const String settingsRoute = '/SettingsScreen';
 }
 
 class RouteGenerator {
@@ -52,6 +54,11 @@ class RouteGenerator {
         return PageTransition(
           type: PageTransitionType.fade,
           child: const UsersScreen(),
+        );
+      case Routes.settingsRoute:
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: const SettingsScreen(),
         );
       default:
         return unDefinedRoute();

@@ -19,5 +19,9 @@
     "default_error": "some thing went wrong, try again later",
     "no_content": "success with not content",
     "get_the_special_discount": "Get the special discount",
-    "off": "OFF"
+    "off": "OFF",
+    "settings": "Settings",
+    "en_lang": "English",
+    "ar_lang": "Arabic",
+    "choose_a_lang": "Choose a language"
 }
