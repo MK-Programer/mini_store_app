@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
+import 'package:mini_store_app/resources/string_manager.dart';
 import '../resources/values_manager.dart';
 import '../services/utils.dart';
 
@@ -48,7 +50,7 @@ class OnSaleWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Get the special discount',
+                        AppStrings.getTheSpecialDiscount.localize(context),
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                       const SizedBox(height: AppMargin.m18),
@@ -58,7 +60,7 @@ class OnSaleWidget extends StatelessWidget {
                           child: FittedBox(
                             fit: BoxFit.fill,
                             child: Text(
-                              '50%\nOFF',
+                              '50%\n${AppStrings.off.localize(context)}',
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
                           ),

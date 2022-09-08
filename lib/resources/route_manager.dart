@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import '../screens/fetch_data_screen.dart';
 import '../screens/categories_screen.dart';
 import '../screens/users_screen.dart';
@@ -61,7 +62,7 @@ class RouteGenerator {
     return PageTransition(
       child: const Scaffold(
         body: Center(
-          child: Text(
+          child: LocaleText(
             AppStrings.noRouteFound,
           ),
         ),

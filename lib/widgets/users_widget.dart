@@ -1,6 +1,6 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:mini_store_app/models/users_model.dart';
+import '../models/users_model.dart';
 import 'package:provider/provider.dart';
 import '../resources/font_manager.dart';
 

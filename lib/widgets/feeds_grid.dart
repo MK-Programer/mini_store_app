@@ -27,8 +27,9 @@ class FeedsGrid extends StatelessWidget {
         : GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount:
-                productsList.length > 4 && isInMain ? 4 : productsList.length,
+            itemCount: productsList.length > AppSize.s4.toInt() && isInMain
+                ? AppSize.s4.toInt()
+                : productsList.length,
             itemBuilder: (context, index) {
               return ChangeNotifierProvider.value(
                 value: productsList[index],

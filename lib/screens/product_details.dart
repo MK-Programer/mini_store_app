@@ -1,6 +1,7 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
 import '../providers/products_provider.dart';
 import '../resources/font_manager.dart';
@@ -64,7 +65,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                   ),
                               children: [
                                 TextSpan(
-                                  text: '${currentProduct.price}',
+                                  text: ' ${currentProduct.price}',
                                   style: Theme.of(context)
                                       .textTheme
                                       .displayMedium!
@@ -113,7 +114,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      AppStrings.description,
+                      AppStrings.description.localize(context),
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     const SizedBox(

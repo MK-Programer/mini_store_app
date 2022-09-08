@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import '../resources/language_manager.dart';
 import '../providers/categories_provider.dart';
 import '../providers/products_provider.dart';
 import '../providers/users_provider.dart';
@@ -8,11 +9,10 @@ import '../resources/route_manager.dart';
 import '../resources/theme_manager.dart';
 import 'package:provider/provider.dart';
 
-import 'resources/language_manager.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Locales.init([ENGLISH, ARABIC]);
+  await Locales.init(
+      [LanguageType.ENGLISH.getValue(), LanguageType.ARABIC.getValue()]);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
     (_) => runApp(
       const MyApp(),

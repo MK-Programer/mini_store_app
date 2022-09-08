@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mini_store_app/providers/users_provider.dart';
-import 'package:mini_store_app/services/error_handler.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:mini_store_app/resources/string_manager.dart';
-import 'package:mini_store_app/resources/values_manager.dart';
+import '../providers/users_provider.dart';
+import '../services/error_handler.dart';
+import '../resources/values_manager.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/categories_provider.dart';
@@ -18,7 +19,7 @@ class FetchDataScreen extends StatefulWidget {
 
 class _FetchDataScreenState extends State<FetchDataScreen> {
   bool _isLoading = false;
-  String errorText = '';
+  String errorText = AppStrings.empty;
 
   @override
   void initState() {
@@ -36,13 +37,15 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
           Navigator.pushNamedAndRemoveUntil(
             context,
             Routes.homeRoute,
-            ModalRoute.withName('/'),
+            ModalRoute.withName(Routes.fetchRoute),
           );
         } catch (error) {
           Failure failure = handleError(int.parse(error.toString()));
           // print(failure.message);
-          setState(() =>
-              errorText = '${AppStrings.anErrorOccurred}, ${failure.message}');
+          setState(() {
+            _isLoading = false;
+            errorText = failure.message;
+          });
         }
       },
     );
@@ -74,9 +77,9 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: _isLoading && errorText == ''
+        child: _isLoading || errorText == AppStrings.empty
             ? const CircularProgressIndicator()
-            : Text(errorText),
+            : Text(errorText.localize(context)),
       ),
     );
   }

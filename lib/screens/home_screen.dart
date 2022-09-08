@@ -1,10 +1,9 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
-import 'package:mini_store_app/resources/font_manager.dart';
+import 'package:mini_store_app/resources/language_manager.dart';
 import '../resources/color_manager.dart';
 import '../resources/icons_manager.dart';
-import '../resources/language_manager.dart';
 import '../resources/route_manager.dart';
 import '../resources/string_manager.dart';
 import '../resources/values_manager.dart';
@@ -22,9 +21,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late TextEditingController _searchEditingController;
-  static const List<String> menuItems = [
-    "EN",
-    "AR",
+  static List<String> menuItems = [
+    LanguageType.ENGLISH.getValue().toUpperCase(),
+    LanguageType.ARABIC.getValue().toUpperCase(),
   ];
 
   final List<DropdownMenuItem<String>> dropDownMenuItems = menuItems
@@ -37,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       )
       .toList();
-  String selected = "EN";
+
   @override
   void initState() {
     _searchEditingController = TextEditingController();
@@ -53,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
-
+    String selected = Utils(context).getCurrentLocale;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -80,16 +79,17 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               width: AppMargin.m8,
             ),
-            // TODO: Implement the localization
             DropdownButton(
               value: selected,
               items: dropDownMenuItems,
               onChanged: (value) async {
                 setState(() => selected = value.toString());
-                if (value == "EN") {
-                  LocaleNotifier.of(context)!.change('en');
+                if (value == LanguageType.ENGLISH.getValue().toUpperCase()) {
+                  LocaleNotifier.of(context)!
+                      .change(LanguageType.ENGLISH.getValue());
                 } else {
-                  LocaleNotifier.of(context)!.change('ar');
+                  LocaleNotifier.of(context)!
+                      .change(LanguageType.ARABIC.getValue());
                 }
               },
             )
@@ -152,8 +152,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Row(
                         children: [
-                          LocaleText(
-                            AppStrings.latestProducts,
+                          Text(
+                            AppStrings.latestProducts.localize(context),
                             style: Theme.of(context).textTheme.headlineMedium,
                           ),
                           const Spacer(),
@@ -161,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             function: () {
                               Navigator.pushNamed(context, Routes.feedsRoute);
                             },
-                            icon: selected == "EN"
+                            icon: selected == menuItems[0] // EN
                                 ? IconManager.arrowRight2Bold
                                 : IconManager.arrowLeft2Bold,
                           ),

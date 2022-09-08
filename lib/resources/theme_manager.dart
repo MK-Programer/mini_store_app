@@ -28,13 +28,7 @@ class ThemeManager {
       textSelectionTheme: const TextSelectionThemeData(
         cursorColor: ColorManager.blackColor,
         selectionColor: ColorManager.blueColor,
-        // selectionHandleColor: Colors.blue,
       ),
-      // textTheme: TextTheme()
-      // textTheme: Theme.of(context).textTheme.apply(
-      //       bodyColor: Colors.black,
-      //       displayColor: Colors.black,
-      //     ),
       cardColor: ColorManager.lightCardColor,
       // status bar
       brightness: Brightness.light,

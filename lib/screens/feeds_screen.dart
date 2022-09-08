@@ -23,7 +23,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
   bool _isLoading = false;
   bool _isLimit = false;
   final ScrollController _scrollController = ScrollController();
-  String errorText = '';
+  String errorText = AppStrings.empty;
 
   @override
   void initState() {
@@ -56,8 +56,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
       );
     } catch (error) {
       Failure failure = handleError(int.parse(error.toString()));
-      setState(() =>
-          errorText = '${AppStrings.anErrorOccurred}, ${failure.message}');
+      setState(() => errorText = failure.message);
     }
   }
 
@@ -97,9 +96,9 @@ class _FeedsScreenState extends State<FeedsScreen> {
       appBar: AppBar(
         title: Text(AppStrings.allProducts.localize(context)),
       ),
-      body: errorText != ''
+      body: errorText != AppStrings.empty
           ? Center(
-              child: Text('${AppStrings.anErrorOccurred}, $errorText'),
+              child: Text(errorText.localize(context)),
             )
           : SingleChildScrollView(
               controller: _scrollController,

@@ -10,6 +10,9 @@ class AppStrings {
   static const String allUsers = 'all_users';
   static const String noMoreProductsFound = 'no_more_products_found';
   static const String anErrorOccurred = 'an_error_occurred';
+  static const String empty = '';
+  static const String getTheSpecialDiscount = 'get_the_special_discount';
+  static const String off = 'off';
   // error handler
   static const String success = "success";
   static const String badRequestError = "bad_request_error";

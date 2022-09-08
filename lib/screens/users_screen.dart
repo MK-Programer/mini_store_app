@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
-import 'package:mini_store_app/providers/users_provider.dart';
+import '../providers/users_provider.dart';
 import 'package:provider/provider.dart';
 import '../resources/string_manager.dart';
 

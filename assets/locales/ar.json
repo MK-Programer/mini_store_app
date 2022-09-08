@@ -5,7 +5,6 @@
     "no_route_found": "لا توجد شاشه",
     "all_products": "جميع المنتجات",
     "description": "الوصف",
- 
     "categories": "فئات",
     "all_users": "جميع المستخدمين",
     "no_more_products_found": "لم يتم العثور على المزيد من المنتجات",
@@ -18,5 +17,7 @@
     "conflict_error": "تم العثور على تعارض , حاول مرة أخرى لاحقًا",
     "internal_server_error": "حدث خطأ ما , حاول مرة أخرى لاحقًا",
     "default_error": "حدث خطأ ما , حاول مرة أخرى لاحقًا",
-    "no_content": "لا يوجد محتوى"
+    "no_content": "لا يوجد محتوى",
+    "get_the_special_discount": "احصل الان على الخصم الخاص",
+    "off": "خصم"
 }
